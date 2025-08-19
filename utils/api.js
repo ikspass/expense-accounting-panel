@@ -1,26 +1,47 @@
-import axios from "axios";
+import { $host } from ".";
 
-export const login = async () => {
-  // Авторизация польователя
-  return { success: true, message: "Авторизация прошла успешно" };
+export const login = async (username, password) => {
+  try {
+    const {data} = await $host.post('auth/login', {username, password});
+    localStorage.setItem('token', data.token);
+    return data;
+  } catch (error) {
+    throw error
+  }
 } 
 
-export const register = async () => {
-  // Регистрация пользователя
-  return { success: true, message: "Регистрация прошла успешно" };
+export const register = async (username, email, password) => {
+  try {
+    const {data} = await $host.post('auth/register', {username, email, password});
+    localStorage.setItem('token', data.token);
+    return data;
+  } catch (error) {
+    throw error;
+  }
 } 
 
-export const getExpenses = async () => {
-  // Получение расходов
-  return [{ id: 1, amount: 100, description: "Бензин" }];
+export const getCategories = async (type) => {
+  // expense || income
+  const {data} = await $authHost.get(`categories?type=${type}`);
+  return data;
 } 
 
-export const addExpense = async () => {
-  // Добавление расхода
-  return { success: true, message: "Расход успешно добавлен" };
+export const createCategory = async (name, type, color, icon) => {
+  const {data} = await $authHost.post('categories', {name, type, color, icon});
+  return data;
 } 
 
-export const getStats = async () => {
-  // Получение статистики
-  return { totalExpenses: 500, averageExpense: 100 };
+export const getTransactions = async (page, perPage, type, categoryId, dateFrom, dateTo) => {
+  const {data} = await $authHost.get(`transactions?page=${page}&per_page=${perPage}&type=${type}&category_id=${categoryId}&date_from=${dateFrom}&date_to=${dateTo}`);
+  return data;
+} 
+
+export const createTransaction = async (categoryId, subCategoryId, amount, type, description, transactionDate) => {
+  const {data} = await $authHost.post('transactions', {category_id: categoryId, subcategory_id: subCategoryId, amount, type, description, transaction_date: transactionDate});
+  return data;
+} 
+
+export const getStats = async (dateFrom, dateTo) => {
+  const {data} = await $authHost.get(`transactions?date_from=${dateFrom}&date_to=${dateTo}`);
+  return data;
 } 
