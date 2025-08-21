@@ -1,4 +1,4 @@
-import { $host } from ".";
+import { $host, $authHost } from ".";
 
 export const login = async (username, password) => {
   try {
