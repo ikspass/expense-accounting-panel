@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../../public/fonts/Roboto-VariableFont_wdth,wght.ttf');
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+
+.danger-text{
+  color: red;
+}
+
+.chart-container{
+  width: 400px;
+}
