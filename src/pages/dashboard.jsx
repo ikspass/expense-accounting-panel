@@ -1,6 +1,7 @@
 import MainContainer from "../components/MainContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getStats } from "../utils/api";
+import { jwtDecode } from 'jwt-decode'
 
 // export async function getServerSideProps(context) {
 //   const data = await getStats();
@@ -12,7 +13,8 @@ import { getStats } from "../utils/api";
 //   };
 // }
 
-const Dashboard = ({data}) => {
+
+const Dashboard = ({data}) => {  
   const stats = {
     totals: {
       expenses: 1250.75,
@@ -79,10 +81,15 @@ const Dashboard = ({data}) => {
   const currentDate = new Date();
 
   const [date, setDate] = useState(formatDate(currentDate));
-  const [username, setUsername] = useState("Polina");
+  const [username, setUsername] = useState('aboba');
   const [expenses, setExpenses] = useState(stats.totals.expenses);
   const [income, setIncome] = useState(stats.totals.income);
   const [limit, setLimit] = useState(1500);
+
+  useEffect(() => {
+    const data = jwtDecode(localStorage.getItem('token'));
+    setUsername(data.username)    
+  }, [])
 
   return (
     <MainContainer>
