@@ -1,11 +1,12 @@
-import MainContainer from "../../components/MainContainer";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-const Index = () => {
-  return (
-    <MainContainer>
-      <h1>Главная страница</h1>
-    </MainContainer>
-  );
-};
+export default function Home() {
+  const router = useRouter();
 
-export default Index;
+  useEffect(() => {
+    router.push('/dashboard');
+  }, [router]);
+
+  return null;
+}
