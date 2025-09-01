@@ -73,7 +73,16 @@ export const editProfile = async ({ full_name, phone, photo_url } = {}) => {
 
 // Лимиты трат
 
-export const getLimits = async (month) => {
+export const getLimits = async () => {
+  try {
+    const {data} = await $authHost.get(`limits`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const getLimitsByMonth = async (month) => {
   try {
     const {data} = await $authHost.get(`limits?month=${month}`);
     return data;
