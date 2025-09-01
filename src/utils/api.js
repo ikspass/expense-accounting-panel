@@ -82,7 +82,7 @@ export const getLimits = async () => {
   }
 }
 
-export const getLimitsByMonth = async (month) => {
+export const getLimitByMonth = async (month) => {
   try {
     const {data} = await $authHost.get(`limits?month=${month}`);
     return data;
@@ -91,7 +91,7 @@ export const getLimitsByMonth = async (month) => {
   }
 }
 
-export const setLimits = async ({limit_amount, limit_month}) => {
+export const setLimit = async ({limit_amount, limit_month}) => {
   try {
     const {data} = await $authHost.post('limits', {limit_amount, limit_month});
     return data;
@@ -100,7 +100,16 @@ export const setLimits = async ({limit_amount, limit_month}) => {
   }
 }
 
-export const checkLimits = async (month) => {
+export const checkLimit = async () => {
+  try {
+    const {data} = await $authHost.get(`limits/check`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const checkLimitsByMonth = async (month) => {
   try {
     const {data} = await $authHost.get(`limits/check?month=${month}`);
     return data;

@@ -1,7 +1,7 @@
 import MainContainer from "../components/MainContainer";
 import { useState, useEffect } from "react";
-import { getLimits, getLimitsByMonth, getProfile, getStats } from "../utils/api";
-import { jwtDecode } from 'jwt-decode'
+import { checkLimit, getProfile } from "../utils/api";
+import Button from "../components/UI/Button";
 
 // export async function getServerSideProps(context) {
 //   const data = await getStats();
@@ -13,8 +13,7 @@ import { jwtDecode } from 'jwt-decode'
 //   };
 // }
 
-
-const Dashboard = ({data}) => {  
+const Dashboard = ({ data }) => {
   const stats = {
     totals: {
       expenses: 1250.75,
@@ -62,58 +61,60 @@ const Dashboard = ({data}) => {
 
     return {
       string: formattedDate,
-      full: date.toISOString().split('T')[0],
+      full: date.toISOString().split("T")[0],
     };
   }
 
   const currentDate = new Date();
 
-  const [userData, setUserData] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [date, setDate] = useState(formatDate(currentDate));
-  const [expenses, setExpenses] = useState(stats.totals.expenses);
-  const [income, setIncome] = useState(stats.totals.income);
-  const [limit, setLimit] = useState(1500);
+  const [limitInfo, setLimitInfo] = useState(null);
 
   const fetchData = async () => {
     try {
       const userData = await getProfile();
-      setUserData(userData); 
-      const limitData = await getLimitsByMonth('2025-08');
-      console.log(limitData);
-      // setLimit(limitData[0].limit_amount);
+      setUserData(userData);
+      const limitData = await checkLimit();
+      setLimitInfo(limitData);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
       setLoading(false);
     }
+  };
 
-  }
-
-  useEffect(() => {  
+  useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
 
   if (loading) {
     return <div>Загрузка...</div>;
   }
+
   return (
     <MainContainer>
       <h1>Главная панель</h1>
       <p>{userData.username}</p>
       <p>{date.string}</p>
-      <p>Сумма расходов за текущий месяц: {expenses} BYN</p>
-      <p>Сумма дохода за текущий месяц: {income} BYN</p>
-      <p>Лимит расходов: {limit ? limit + " BYN" : "Не установлено"}</p>
+      <p>Сумма расходов за текущий месяц: {limitInfo.spending.total} BYN</p>
+      <p>
+        Лимит расходов:{" "}
+        {limitInfo.has_limit
+          ? limitInfo.limit.amount + " BYN"
+          : "Не установлено"}
+      </p>
       <p>
         Остаток бюджета в текущем месяце:{" "}
-        {limit
-          ? (limit - expenses > 0 ? limit - expenses : 0) + " BYN"
+        {limitInfo.has_limit
+          ? limitInfo.spending.remaining + " BYN"
           : "Безлимит"}{" "}
       </p>
-      {limit && expenses > limit && (
+      {limitInfo.spending.remaining === 0 && (
         <p className="danger-text">Вы превысили бюджет!</p>
       )}
+      <Button>Добавить расход</Button>
     </MainContainer>
   );
 };
