@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "./UI/Button";
 
 const NavBar = () => {
   return (
@@ -24,6 +25,7 @@ const NavBar = () => {
       <Link href="/stats">
         <p>Статистика</p>
       </Link>
+      <Button>Выход</Button>
     </div>
   );
 };
