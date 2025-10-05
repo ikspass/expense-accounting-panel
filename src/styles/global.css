@@ -1,13 +1,124 @@
 @font-face {
+  font-family: 'Inter';
+  src: url('../../public/fonts/Inter-VariableFont_opsz\,wght.ttf');
+}
+@font-face {
   font-family: 'Roboto';
-  src: url('../../public/fonts/Roboto-VariableFont_wdth,wght.ttf');
+  src: url('../../public/fonts/Roboto-VariableFont_wdth\,wght.ttf');
+}
+
+:root{
+  --black: #16172D;
+  --white: #FDFDFD;
+  --red: #FF0C0C;
+  --green: #18E018;
+  --footer: #828099;
+  --dark-blue: #1C183B;
+  --background: #120F2C;
+}
+
+body{
+  background-color: var(--background);
+}
+
+a{
+  color: var(--white);
+  text-decoration: none;
 }
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto';
+}
+
+h1, h2, h3, p{
+  margin: 0;
+}
+
+h1{
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: Inter;
+  color: var(--white);
+}
+
+h2{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: Inter;
+  color: var(--white);
+}
+
+.text-body{
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--white);
+  font-family: Inter;
+}
+
+.text-small{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-family: Inter;
+  color: var(--white);
+}
+
+.text-caps{
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  font-family: Inter;
+  color: var(--white);
+}
+
+.numbers-head{
+  font-family: Roboto;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--white);
+}
+
+.numbers-caption{
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--white);
+}
+
+.numbers-subtitle{
+  font-family: Roboto;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--white);
+}
+
+.green-text{
+  color: var(--green);
+}
+
+.red-text{
+  color: var(--red);
+}
+
+.opacity-40{
+  opacity: 40%;
 }
 
 .danger-text{
@@ -16,4 +127,14 @@
 
 .chart-container{
   width: 400px;
+}
+
+.main-container{
+  display: flex;
+  padding: 20px 40px;
+  gap: 28px;
+}
+
+.main-section{
+  width: 100%;
 }

@@ -1,0 +1,44 @@
+.navbar{
+  display: flex;
+  flex-direction: column;
+  background-color: #1C183B;
+  border-radius: 8px;
+  width: fit-content;
+  padding: 30px;
+  gap: 30px;
+}
+
+.navMenu{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.item{
+  display: flex;
+  width: 192px;
+  height: 44px;
+  padding: 0 30px;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar button{
+  display: flex;
+  padding: 16px 63px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #C8C8C8;
+  background: #A231B8;
+
+  color: #FFF;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

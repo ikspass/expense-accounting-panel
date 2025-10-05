@@ -1,0 +1,29 @@
+.container{
+  background-color: var(--dark-blue);
+  color: var(--footer);
+  padding: 20px 0 40px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.containerItem{
+  display: flex;
+  gap: 130px;
+}
+
+.contactsItem{
+  display: flex;
+  gap: 12px;
+}
+
+.gap8{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gap4{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
