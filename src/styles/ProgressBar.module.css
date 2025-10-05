@@ -1,0 +1,13 @@
+.progress{
+  width: 100%;
+  height: 16px;
+  border-radius: 100px;
+  background: var(--black);
+  position: relative;
+}
+
+.progressBar{
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #A231B8 0%, #7D49F2 100%);
+}

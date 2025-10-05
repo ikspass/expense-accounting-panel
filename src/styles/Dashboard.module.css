@@ -1,0 +1,128 @@
+.dashboardContainer{
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(7, minmax(90px, 1fr));
+  gap: 20px;
+}
+
+.totalBalanceCard{
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.incomeCard{
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.expensesCard{
+  grid-column: span 3;  
+  grid-row: span 2;
+}
+
+.limitCard{
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.allExpensesCard{
+  grid-column: span 3;
+  grid-row: span 3;
+}
+
+.analyticsCard{
+  grid-column: span 6;
+  grid-row: span 3;
+}
+
+.todayCard{
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.categoriesCard{
+  grid-column: span 5;
+  grid-row: span 2;
+}
+
+.statisticsCard{
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.transactionsCard{
+  grid-column: span 3;
+  grid-row: span 3;
+}
+
+.dashboardContainer button{
+  background-color: var(--dark-blue);
+  border: none;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+}
+
+.dashboardContainer input{
+  background-color: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  height: 44px;
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.imageContainer{
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 100px;
+}
+
+.imageContainer img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.dashboardCard{
+  background-color: var(--dark-blue);
+  border-radius: 8px;
+  padding: 20px 30px 45px;
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* grid-column: span 3; */
+}
+
+.dashboardCardHead{
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboardCardStats{
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.limitCardInfo{
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboardCard select{
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  width: fit-content;
+}
